@@ -354,7 +354,8 @@ const TwType TW_TYPE_CSSTRING_MAX   = TW_TYPE_CSSTRING(0xfffffff);
 #define TW_CSSTRING_SIZE(type)      ((int)((type)&0xfffffff))
 const TwType TW_TYPE_CUSTOM_BASE    = TwType(0x40000000);
 
-extern "C" int ANT_CALL TwSetLastError(const char *_StaticErrorMessage);
+//extern "C" int ANT_CALL TwSetLastError(const char *_StaticErrorMessage);
+int ANT_CALL TwSetLastError(const char *_StaticErrorMessage);
 
 const TwGraphAPI TW_OPENGL_CORE = (TwGraphAPI)5; // WIP (note: OpenGL Core Profil requires OpenGL 3.2 or later)
 
