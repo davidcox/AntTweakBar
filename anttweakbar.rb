@@ -1,6 +1,6 @@
 require 'formula'
 
-class Anttweakbar < Formula
+class Libanttweakbar < Formula
   url 'https://github.com/davidcox/AntTweakBar/tarball/master'
   homepage ''
   md5 'ff28695f4f4a73f477289de8cc204151'
