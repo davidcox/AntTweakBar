@@ -1,2 +1,5 @@
 CMakeCache.txt
 Makefile
+*.dylib
+*.exe
+*.so
