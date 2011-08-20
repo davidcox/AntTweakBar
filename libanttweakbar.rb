@@ -1,9 +1,9 @@
 require 'formula'
 
 class Libanttweakbar < Formula
-  url 'https://github.com/davidcox/AntTweakBar/tarball/master'
+  url 'https://github.com/davidcox/AntTweakBar/tarball/5d01aacbeb71fcd6928b'
   homepage ''
-  md5 'ff28695f4f4a73f477289de8cc204151'
+  md5 '51c1f31fa5e504b2baf4e71101256f11'
   version '1.14'
 
   # depends_on 'cmake'
