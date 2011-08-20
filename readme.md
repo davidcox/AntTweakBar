@@ -7,7 +7,7 @@ AntTweakBar is an great little library for parameter setting GUIs in OpenGL.  Un
 For Mac OS X, a homebrew formula is provided (`libanttweakbar.rb`).  Copy this file into `/usr/local/library/Formula/` and call `brew install libanttweakbar`.  You can copy the following commands into a shell:
 
     wget https://raw.github.com/davidcox/AntTweakBar/master/libanttweakbar.rb
-    cp anttweakbar.rb /usr/local/Library/Formula/
+    cp libanttweakbar.rb /usr/local/Library/Formula/
     brew install libanttweakbar
     rm libanttweakbar.rb
 
