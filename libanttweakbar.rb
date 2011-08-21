@@ -1,16 +1,15 @@
 require 'formula'
 
 class Libanttweakbar < Formula
-  url 'https://github.com/davidcox/AntTweakBar/tarball/5d01aacbeb71fcd6928b'
+  url 'https://github.com/davidcox/AntTweakBar/tarball/f6af7426ac850a1f79c8'
   homepage ''
-  md5 '51c1f31fa5e504b2baf4e71101256f11'
+  md5 '55f11de602d37141fad6220c2e3d25c0'
   version '1.14'
 
-  # depends_on 'cmake'
+  depends_on 'cmake'
 
   def install
-    system "cd src; make -f Makefile.osx"
-    system "cp -r lib #{prefix}/"
-    system "cp -r include #{prefix}/"
+    system "cmake . #{std_cmake_parameters}"
+    system "make install"
   end
 end
