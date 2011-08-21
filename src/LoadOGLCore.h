@@ -58,6 +58,8 @@ ANT_GL_CORE_DECL(void, glTexParameterf, (GLenum target, GLenum pname, GLfloat pa
 ANT_GL_CORE_DECL(void, glTexParameterfv, (GLenum target, GLenum pname, const GLfloat *params))
 ANT_GL_CORE_DECL(void, glTexParameteri, (GLenum target, GLenum pname, GLint param))
 ANT_GL_CORE_DECL(void, glTexParameteriv, (GLenum target, GLenum pname, const GLint *params))
+
+//#if defined(OH_NO_HE_DIDNT)
 #if defined(ANT_OSX)
 // Mac OSX redefined these OpenGL calls: glTexImage1D, glTexImage2D
 ANT_GL_CORE_DECL(void, glTexImage1D, (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels))

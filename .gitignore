@@ -1,5 +1,8 @@
 CMakeCache.txt
-Makefile
+*Makefile
 *.dylib
 *.exe
 *.so
+*CMakeFiles
+*cmake_install.cmake
+*install_manifest.txt

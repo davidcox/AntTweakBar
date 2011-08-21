@@ -1,49 +1,64 @@
 cmake_minimum_required(VERSION 2.8)
 project(AntTweakBar)
 
+include(FindOpenGL)
+include(FindSDL)
+
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
-include_directories(
-	include
-)
+# Project includes
+set(ATB_INCLUDE_DIR include)
 
-file(GLOB_RECURSE SOURCES src/*.cpp)
+# Standard Packages
+find_package(OpenGL REQUIRED)
+find_package(GLUT)
+find_library(GLFW_LIBRARY glfw)
 
-IF(APPLE)
-   INCLUDE_DIRECTORIES ( /System/Library/Frameworks )
-   FIND_LIBRARY(COCOA_LIBRARY Cocoa)
-   FIND_LIBRARY(APPKIT_LIBRARY AppKit)
-   FIND_LIBRARY(GLUT_LIBRARY GLUT )
-   FIND_LIBRARY(OpenGL_LIBRARY OpenGL )
-   MARK_AS_ADVANCED (COCOA_LIBRARY
-                     GLUT_LIBRARY
-                     OpenGL_LIBRARY)
-   SET(EXTRA_LIBS ${APPKIT_LIBRARY} ${COCOA_LIBRARY} ${GLUT_LIBRARY}  ${OpenGL_LIBRARY})
+include_directories( ${ATB_INCLUDE_DIR} 
+                     ${OPENGL_INCLUDE_DIR} 
+                     ${GLUT_INCLUDE_DIR})
+
+if(APPLE)
+
+   include_directories ( /System/Library/Frameworks )
    
-   SET(CMAKE_CXX_FLAGS "-g -Wall -ObjC++ -fPIC -D__PLACEMENT_NEW_INLINE")
+   find_library(APPKIT_LIBRARY AppKit)
    
-   ADD_DEFINITIONS(-D_MACOSX)
-ENDIF (APPLE)
+   message("Appkit: ${APPKIT_LIBRARY}")
+
+   set(EXTRA_LIBS ${APPKIT_LIBRARY})
+
+   set(CMAKE_CXX_FLAGS "-g -Wall -ObjC++ -fPIC -fno-strict-aliasing -D__PLACEMENT_NEW_INLINE")
+
+   add_definitions(-D_MACOSX)
+   
+endif(APPLE)
+
+set( SOURCES src/LoadOGL.cpp
+             src/TwColors.cpp
+             src/TwMgr.cpp
+             src/TwPrecomp.cpp
+             src/TwEventSFML.cpp
+             src/TwOpenGL.cpp
+             src/TwBar.cpp
+             src/TwFonts.cpp
+             src/TwEventGLUT.c
+             src/TwEventGLFW.c
+             #src/TwEventSDL.c
+             #src/TwEventSDL12.c 
+             #src/TwEventSDL13.c
+             )
 
 
-add_library(AntTweakBar ${SOURCES})
-target_link_libraries(AntTweakBar ${EXTRA_LIBS})
+add_library(AntTweakBar SHARED ${SOURCES})
 
-#ADD_DEFINITIONS(-D_UNIX)
+message("Extra libs: ${EXTRA_LIBS}")
+target_link_libraries(AntTweakBar  ${GLUT_LIBRARY} 
+                                   ${OPENGL_LIBRARY} 
+                                   ${EXTRA_LIBS})
 
 
-# add_executable(TwAdvanced1 examples/TwAdvanced1.cpp)
-# target_link_libraries(TwAdvanced1 AntTweakBar GLU glfw)
-# 
-# add_executable(TwSimpleGLFW examples/TwSimpleGLFW.cpp)
-# target_link_libraries(TwSimpleGLFW AntTweakBar GLU glfw)
-# 
-# add_executable(TwSimpleGLUT examples/TwSimpleGLUT.cpp)
-# target_link_libraries(TwSimpleGLUT AntTweakBar GLU glut)
-# 
-# add_executable(TwSimpleSDL examples/TwSimpleSDL.cpp)
-# target_link_libraries(TwSimpleSDL AntTweakBar GLU SDL)
-# 
-# add_executable(TwString examples/TwString.cpp)
-# target_link_libraries(TwString AntTweakBar glfw)
+install(TARGETS AntTweakBar LIBRARY DESTINATION lib)
+
+#add_subdirectory(examples)
