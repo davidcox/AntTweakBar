@@ -8,7 +8,7 @@ For Mac OS X, a homebrew formula is provided (`libanttweakbar.rb`).  Copy this f
 
     wget https://raw.github.com/davidcox/AntTweakBar/master/libanttweakbar.rb
     cp libanttweakbar.rb /usr/local/Library/Formula/
-    brew install libanttweakbar
+    brew install --HEAD libanttweakbar
     rm libanttweakbar.rb
 
 Everything else should take care of itself.

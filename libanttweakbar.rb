@@ -4,6 +4,7 @@ class Libanttweakbar < Formula
   url 'https://github.com/davidcox/AntTweakBar/tarball/a71118aabad60c1749e3'
   homepage ''
   md5 '045c92643889d90ebab5556c95aa7c22'
+  head 'git://github.com/davidcox/AntTweakBar.git'
   version '1.14'
 
   depends_on 'cmake'
